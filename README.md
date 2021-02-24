@@ -1,6 +1,6 @@
 # React movie-app
 
-Learing React, JS
+Learning React, JS
 
 ### Reference yts-web image
 

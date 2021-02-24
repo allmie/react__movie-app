@@ -18,8 +18,10 @@ export default class HomeComponent extends React.Component {
       } = await axios.get(
         "https://yts-proxy.now.sh/list_movies.json?sort_by=like_count"
       );
+      const popularMovies = movies.filter((mv, index) => index < 4);
+
       this.setState({
-        movies,
+        movies: popularMovies,
       });
     } catch {
       this.setState({
@@ -37,7 +39,7 @@ export default class HomeComponent extends React.Component {
   };
 
   render() {
-    console.log(this.state);
+    console.log(this.state.movies);
     const { movies, loading, error } = this.state;
     return <HomePresenter movies={movies} loading={loading} error={error} />;
   }
