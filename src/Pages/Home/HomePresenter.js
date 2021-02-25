@@ -4,7 +4,7 @@ import React from "react";
 import styled from "styled-components";
 
 const Page = styled.div`
-  padding-top: 45px;
+  padding-top: 50px;
   color: #ffffff;
   z-index: -1;
   width: 100vw;
@@ -12,7 +12,6 @@ const Page = styled.div`
 
 const PopularMovieSection = styled.section`
   padding: 0 100px;
-  background-color: #262525;
 `;
 const PopularSectionTitle = styled.h2`
   height: 60px;
@@ -39,6 +38,7 @@ const MovieSection = styled.div`
 
 const HighRateMovieSection = styled.section`
   padding: 0 100px;
+  background-color: #262525;
 `;
 const HighRateSectionTitle = styled.h4`
   padding: 20px 30px 5px 30px;
