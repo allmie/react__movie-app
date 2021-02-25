@@ -1,17 +1,20 @@
 import Loader from "Components/Loader";
-import PopularMovies from "Components/PopularMovies";
+import Movies from "Components/Movies";
 import React from "react";
 import styled from "styled-components";
 
 const Page = styled.div`
-  position: relative;
-  top: 50px;
+  padding-top: 45px;
   color: #ffffff;
-  margin: 0 100px;
   z-index: -1;
+  width: 100vw;
 `;
 
-const SectionTitle = styled.h2`
+const PopularMovieSection = styled.section`
+  padding: 0 100px;
+  background-color: #262525;
+`;
+const PopularSectionTitle = styled.h2`
   height: 60px;
   display: flex;
   justify-content: center;
@@ -22,37 +25,64 @@ const SectionTitle = styled.h2`
     margin-right: 10px;
   }
 `;
-const SectionText = styled.span`
+const PopularSectionText = styled.span`
   font-weight: 600;
 `;
-const Section = styled.section`
-  padding: 20px 30px;
-  width:
-  border: 1px solid red;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+const MovieSection = styled.div`
+  margin: 25px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
   column-gap: 20px;
+  row-gap: 40px;
 `;
 
-const HomePresenter = ({ movies, loading, error }) =>
+const HighRateMovieSection = styled.section`
+  padding: 0 100px;
+`;
+const HighRateSectionTitle = styled.h4`
+  padding: 20px 30px 5px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+const HighRateSectionText = styled.span`
+  font-weight: 600;
+  font-size: 1.1em;
+`;
+const MoreSearch = styled.span`
+  color: #838884;
+`;
+
+const HomePresenter = ({ highRate, popular, loading, error }) =>
   loading ? (
     <Page>
       <Loader />
     </Page>
   ) : (
     <Page>
-      <SectionTitle>
-        <i className="fas fa-star" style={{ color: "#6bc146" }}></i>
-        <SectionText>Popular Download</SectionText>
-      </SectionTitle>
-      <Section>
-        {movies &&
-          movies.length > 0 &&
-          movies.map((element) => (
-            <PopularMovies key={element.id} {...element} />
-          ))}
-      </Section>
+      <PopularMovieSection>
+        <PopularSectionTitle>
+          <i className="fas fa-star" style={{ color: "#6bc146" }}></i>
+          <PopularSectionText>Popular Download</PopularSectionText>
+        </PopularSectionTitle>
+        <MovieSection>
+          {popular &&
+            popular.length > 0 &&
+            popular.map((element) => <Movies key={element.id} {...element} />)}
+        </MovieSection>
+      </PopularMovieSection>
+      <HighRateMovieSection>
+        <HighRateSectionTitle>
+          <HighRateSectionText>Latest YIFY Movies Torrents</HighRateSectionText>
+          <MoreSearch>Browse All</MoreSearch>
+        </HighRateSectionTitle>
+        <MovieSection>
+          {highRate &&
+            highRate.length > 0 &&
+            highRate.map((element) => <Movies key={element.id} {...element} />)}
+        </MovieSection>
+      </HighRateMovieSection>
     </Page>
   );
 
