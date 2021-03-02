@@ -65,7 +65,6 @@ export default class HomeComponent extends React.Component {
   };
 
   render() {
-    console.log(this.state.highRate);
     const { highRate, popular, loading, error } = this.state;
     return (
       <HomePresenter

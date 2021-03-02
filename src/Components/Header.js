@@ -13,6 +13,7 @@ const Navigation = styled.nav`
   font-size: 15px;
   padding-top: 5px;
   overflow: hidden;
+  z-index: 2;
 `;
 const PageTitle = styled.span`
   display: flex;

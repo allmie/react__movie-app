@@ -6,12 +6,13 @@ import styled from "styled-components";
 const Page = styled.div`
   padding-top: 50px;
   color: #ffffff;
-  z-index: -1;
+
   width: 100vw;
 `;
 
 const PopularMovieSection = styled.section`
   padding: 0 100px;
+  z-index: -2;
 `;
 const PopularSectionTitle = styled.h2`
   height: 60px;
@@ -27,7 +28,7 @@ const PopularSectionTitle = styled.h2`
 const PopularSectionText = styled.span`
   font-weight: 600;
 `;
-const MovieSection = styled.div`
+const PopularMovie = styled.div`
   margin: 25px 10px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -39,6 +40,7 @@ const MovieSection = styled.div`
 const HighRateMovieSection = styled.section`
   padding: 0 100px;
   background-color: #262525;
+  z-index: -2;
 `;
 const HighRateSectionTitle = styled.h4`
   padding: 20px 30px 5px 30px;
@@ -53,6 +55,14 @@ const HighRateSectionText = styled.span`
 const MoreSearch = styled.span`
   color: #838884;
 `;
+const HighRateMovie = styled.div`
+  margin: 25px 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  justify-items: center;
+  column-gap: 20px;
+  row-gap: 40px;
+`;
 
 const HomePresenter = ({ highRate, popular, loading, error }) =>
   loading ? (
@@ -66,22 +76,22 @@ const HomePresenter = ({ highRate, popular, loading, error }) =>
           <i className="fas fa-star" style={{ color: "#6bc146" }}></i>
           <PopularSectionText>Popular Download</PopularSectionText>
         </PopularSectionTitle>
-        <MovieSection>
+        <PopularMovie>
           {popular &&
             popular.length > 0 &&
             popular.map((element) => <Movies key={element.id} {...element} />)}
-        </MovieSection>
+        </PopularMovie>
       </PopularMovieSection>
       <HighRateMovieSection>
         <HighRateSectionTitle>
           <HighRateSectionText>Latest YIFY Movies Torrents</HighRateSectionText>
           <MoreSearch>Browse All</MoreSearch>
         </HighRateSectionTitle>
-        <MovieSection>
+        <HighRateMovie>
           {highRate &&
             highRate.length > 0 &&
             highRate.map((element) => <Movies key={element.id} {...element} />)}
-        </MovieSection>
+        </HighRateMovie>
       </HighRateMovieSection>
     </Page>
   );
