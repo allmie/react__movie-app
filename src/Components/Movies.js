@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 const Movie = styled.div`
   margin-bottom: 40px;
@@ -19,6 +19,35 @@ const DetailInfo = styled.div`
   opacity: 0;
   transition: opacity 0.2s linear;
 `;
+const showUp = keyframes`
+  from{
+    bottom: 0;
+  }
+  to{
+    bottom: 30px;
+  }
+`;
+const showDown = keyframes`
+  from{
+   bottom: 30px;
+  }
+  to{
+   bottom: 0;
+  }
+`;
+const Button = styled.button`
+  all: unset;
+  color: #ffffff;
+  background-color: #0afe3c;
+  border-radius: 5px;
+  position: absolute;
+  bottom: 30px;
+  width: 65%;
+  height: 30px;
+  left: 40px;
+  animation: 0.3s ${showDown};
+`;
+
 const ImageContainer = styled.div`
   position: relative;
   width: 200px;
@@ -32,6 +61,9 @@ const ImageContainer = styled.div`
     }
     ${DetailInfo} {
       opacity: 1;
+    }
+    ${Button} {
+      animation: 0.2s ${showUp};
     }
   }
 `;
@@ -52,19 +84,6 @@ const Genre = styled.li`
   font-size: 1.5em;
   font-weight: 600;
   margin-bottom: 5px;
-`;
-const Button = styled.button`
-  all: unset;
-  color: #ffffff;
-  background-color: #0afe3c;
-  border-radius: 5px;
-  position: absolute;
-  bottom: 30px;
-  width: 65%;
-  height: 30px;
-  left: 40px;
-  &:hover {
-  }
 `;
 
 const MovieTitle = styled.h5`
