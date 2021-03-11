@@ -5,6 +5,20 @@ const Movie = styled.div`
   margin-bottom: 40px;
   max-width: 210px;
 `;
+const Img = styled.img`
+  width: 100%;
+  z-index: -1;
+  transition: opacity 0.5s linear;
+`;
+const DetailInfo = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.2s linear;
+`;
 const ImageContainer = styled.div`
   position: relative;
   width: 200px;
@@ -13,22 +27,13 @@ const ImageContainer = styled.div`
   margin-bottom: 5px;
   &:hover {
     border: 4px solid #0afe3c;
-    Img {
-      opacity: 0.2;
+    ${Img} {
+      opacity: 0.3;
+    }
+    ${DetailInfo} {
+      opacity: 1;
     }
   }
-`;
-const Img = styled.img`
-  width: 100%;
-  z-index: -1;
-`;
-const DetailInfo = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  top: 0;
-  text-align: center;
-  z-index: -1;
 `;
 const Icon = styled.span`
   display: block;
@@ -49,6 +54,7 @@ const Genre = styled.li`
   margin-bottom: 5px;
 `;
 const Button = styled.button`
+  all: unset;
   color: #ffffff;
   background-color: #0afe3c;
   border-radius: 5px;
@@ -57,8 +63,7 @@ const Button = styled.button`
   width: 65%;
   height: 30px;
   left: 40px;
-  &: hover {
-    outline: none;
+  &:hover {
   }
 `;
 
